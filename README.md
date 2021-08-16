@@ -1,1 +1,1 @@
-# CaliforniaHousePricePredictionProject
+# CaliforniaHousePricePredictionproject
