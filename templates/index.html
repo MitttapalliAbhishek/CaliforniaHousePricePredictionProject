@@ -1,0 +1,177 @@
+<!-- Using jinja2 templates for python flask app-->
+{% extends "base.html" %}
+<!--<!DOCTYPE html>
+<html lang="en">
+       <head>-->
+           {% block head %}
+              <meta charset="utf-8">
+              <meta http-equiv="X-UA-Compatible" content="IE=edge">
+              <title>California House Price Prediction</title>
+              <link   rel="icon" href="https://www.freefavicon.com/freefavicons/icons/house-icon-silhouette-152-242151.png" / >
+              
+              <meta   name="description" content="">
+              <meta   name="viewport" content="width=device-width, initial-scale=1">
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+              
+              <link   rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+              <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+              <link   href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+
+              <!--INTERNAL STYLE SHEET-->
+              <link   rel="stylesheet" href="static/css/style.css">
+              <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+              <!--<script src="script.js" rel="text/javascript"></script>-->
+          <!--</head>-->
+          {% endblock %}
+
+
+<!--<body>-->
+{% block body %}
+    <nav class="nav">
+        <div class="container">
+            <div class="logo">
+                <img src="https://image.flaticon.com/icons/png/128/2166/2166291.png" style="width: 50px ; float: unset;">
+                <a href="#">California House Price Prediction</a>
+            </div>
+            <div id="mainListDiv" class="main_list">
+                <ul class="navlinks">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#About">About</a></li>
+                    <li><a href="#front">Price Prediction</a></li>
+                    <li><a href="#footer">Contact</a></li>
+                </ul>
+              </div>
+            <span class="navTrigger">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+        </div>
+    </nav>
+
+    <div id="quote">
+        <p scroll="no" style="overflow: hidden">Price is what you pay .<br>
+                Value is what you get.
+        </p>
+    </div>  
+
+    <section class="home">
+    </section>
+    <div id="About" style="margin:100px">
+        <!-- just to make scrolling effect possible -->
+        <br>
+			<h2  class="myH2">What is that we do ?</h2> <br>
+			<p   class="myP">This is a responsive fixed navbar animated on scroll</p>
+			<p   class="myP">
+                    I took inspiration from  ABDO STEIF (<a href="https://codepen.io/abdosteif/pen/bRoyMb?editors=1100">https://codepen.io/abdosteif/pen/bRoyMb?editors=1100</a>)
+			        and Dicson                           <a href="https://codepen.io/dicson/pen/waKPgQ">(https://codepen.io/dicson/pen/waKPgQ)</a>
+            </p>
+			<p class="myP">I HOPE YOU FIND THIS USEFULL</p>
+			<p class="myP">Albi</p>
+			<p class="myP">
+				
+				    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum ratione facere animi impedit rem labore sint repellendus ipsa sapiente voluptatem aut excepturi quo itaque, ab earum cumque. Voluptatem beatae id inventore quod voluptate qui deserunt, quis   placeat, tempora ex totam, dolore sequi harum eos voluptatibus animi labore officiis minus laboriosam
+				    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum ratione facere animi impedit rem labore sint repellendus ipsa sapiente voluptatem aut excepturi quo itaque, ab earum cumque. Voluptatem beatae id inventore quod voluptate qui deserunt, quis   placeat, tempora ex totam, dolore sequi harum eos voluptatibus animi labore officiis minus laboriosam
+				    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum ratione facere animi impedit rem labore sint repellendus ipsa sapiente voluptatem aut excepturi quo itaque, ab earum cumque. Voluptatem beatae id inventore quod voluptate qui deserunt, quis   placeat, tempora ex totam, dolore sequi harum eos voluptatibus animi labore officiis minus laboriosam
+				    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum ratione facere animi impedit rem labore sint repellendus ipsa sapiente voluptatem aut excepturi quo itaque, ab earum cumque. Voluptatem beatae id inventore quod voluptate qui deserunt, quis   placeat, tempora ex totam, dolore sequi harum eos voluptatibus animi labore officiis minus laboriosam
+				    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum ratione facere animi impedit rem labore sint repellendus ipsa sapiente voluptatem aut excepturi quo itaque, ab earum cumque. Voluptatem beatae id inventore quod voluptate qui deserunt, quis   placeat, tempora ex totam, dolore sequi harum eos voluptatibus animi labore officiis minus laboriosam
+			</p>
+            <img src="https://coinsforecast.com/wp-content/uploads/2020/04/Uniqueness.png" alt="">
+    </div>
+    <div class="img">   </div>
+<div class="front" id="front">
+    <ul >
+    <!--FORM TO TAKE INPUT VALUES-->
+        <form class="form" action="/predict" method="POST">  
+            
+              
+                  <h1 class="h1" style="text-align:left">California House Price Prediction</h1><br>
+                  <input type="number"  id="input1"   name="input1"    placeholder="longitude"                  oninvalid="alert('You must fill out the form!');"  min="-124.35"  max="-114.31"   step="any"     size="200"  /     >  &nbsp;
+                  <input type="number"  id="input2"   name="input2"    placeholder="latitude"                   oninvalid="alert('You must fill out the form!');"  min="32.54"    max="41.95"     step="any"     size="200"  /     >  &nbsp;
+                  <input type="number"  id="input3"   name="input3"    placeholder="housing median age"         oninvalid="alert('You must fill out the form!');"  min="1.0"      max="60.0"      step="any"     size="200"  /     >  &nbsp;
+                  <input type="number"  id="input4"   name="input4"    placeholder="total rooms"                oninvalid="alert('You must fill out the form!');"  min="2.0"      max="39320.0"   step="any"     size="200"  /     >  <br>
+                  <input type="number"  id="input5"   name="input5"    placeholder="total bedrooms"             oninvalid="alert('You must fill out the form!');"  min="1.0"      max="6445.0"    step="any"     size="200"  /     >  &nbsp;
+                  <input type="number"  id="input6"   name="input6"    placeholder="population"                 oninvalid="alert('You must fill out the form!');"  min="3.0"      max="35682.0"   step="any"     size="200"  /     >  &nbsp;
+                  <input type="number"  id="input7"   name="input7"    placeholder="households"                 oninvalid="alert('You must fill out the form!');"  min="1.0"      max="6082.0"    step="any"     size="200"  /     >  &nbsp;
+                  <input type="number"  id="input8"   name="input8"    placeholder="median income"              oninvalid="alert('You must fill out the form!');"  min="0.4999"   max="15.0001"   step="any"     size="200"  /     >  <br>
+                  <input type="number"  id="input9"   name="input9"    placeholder="rooms per household"        oninvalid="alert('You must fill out the form!');"  min="1.0"      max="142.0"     step="any"     size="200"  /     >  &nbsp;
+                  <input type="number"  id="input10"  name="input10"   placeholder="bedrooms per room"          oninvalid="alert('You must fill out the form!');"  min="0.0"      max="3.0"       step="any"     size="200"  /     >  &nbsp;
+                  <input type="number"  id="input11"  name="input11"   placeholder="population per household "  oninvalid="alert('You must fill out the form!');"  min="1.0"      max="1243.0"    step="any"     size="200"  /     >  &nbsp; 
+                  <input type="number"  id="input12"  name="input12"   placeholder="INLAND"                     oninvalid="alert('You must fill out the form!');"  min="0.0"      max="1.0"       step="any"     size="200"  /     >  <br>
+                  <input type="number"  id="input13"  name="input13"   placeholder="NEAR BAY"                   oninvalid="alert('You must fill out the form!');"  min="0.0"      max="1.0"       step="any"     size="200"  /     >  &nbsp;
+                  <input type="number"  id="input14"  name="input14"   placeholder="OCEAN"                      oninvalid="alert('You must fill out the form!');"  min="0.0"      max="1.0"       step="any"     size="200"  /     >  &nbsp;
+                  <input type="number"  id="input15"  name="input15"   placeholder="NEAR OCEAN"                 oninvalid="alert('You must fill out the form!');"  min="0.0"      max="1.0"       step="any"     size="200"  /     >  &nbsp; 
+                  <input type="number"  id="input16"  name="input16"   placeholder="ISLAND"                     oninvalid="alert('You must fill out the form!');"  min="0.0"      max="1.0"       step="any"     size="200"  /     >  <br> 
+                 <!-- <select type="text"  id="input12"   name="input10"   placeholder="ocean_proximity" >
+                         <option value="INLAND"     id="input12"   name="input10"   placeholder="ocean_proximity">INLAND     </option>
+                         <option value="NEAR BAY"   id="input12"   name="input10"   placeholder="ocean_proximity">NEAR BAY   </option>
+                         <option value="OCEAN"      id="input12"   name="input10"   placeholder="ocean_proximity">OCEAN      </option>
+                         <option value="NEAR OCEAN" id="input12"   name="input10"   placeholder="ocean_proximity">NEAR OCEAN </option>
+                         <option value="ISLAND"     id="input12"   name="input10"   placeholder="ocean_proximity">ISLAND     </option>
+                         <option value="0"          id="input12"   name="input10"   placeholder="ocean_proximity">NULL       </option>
+                         
+                  </select>-->
+                  <br><input type="submit" class="submit"  value="ESTIMATE" onclick="onClickedEstimatePrice()"></input> 
+                  
+                   <center><h2 class="h2">Price: {{data}} $ </h2></center>  
+                   
+                  <!-- <div id="uiEstimatedPrice" class="result"> {{data}} <h2></h2> </div>-->
+              
+        </form>
+
+
+    </div>
+
+</ul>    
+     
+
+
+    <!-- footer -->
+    <footer style="margin-top: 100px;" id="footer">
+      <!-- Grid container -->
+    
+      <!-- Copyright -->
+      
+      <div class="text-center p-3" style="background-color:#f8f1f1">
+          <div class="social-menu " >
+              <ul>
+                  <li><a href="#"><i class="fa fa-facebook">  </i></a></li>
+                  <li><a href="#"><i class="fa fa-twitter">   </i></a></li>
+                  <li><a href="#"><i class="fa fa-github">    </i></a></li>
+                  <li><a href="#"><i class="fa fa-linkedin">  </i></a></li>
+              </ul>
+          </div>
+        © 2020 Copyright:
+        <a class="text-white" href="#">California House Price Prediction</a>
+      </div>
+      <!-- Copyright -->
+  </footer>
+<!-- Jquery needed For Footer Part-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script> $('.navTrigger').click(function () {
+        $(this).toggleClass('active');
+        console.log("Clicked menu");
+        $("#mainListDiv").toggleClass("show_list");
+        $("#mainListDiv").fadeIn();
+    
+    });
+    </script>
+
+<!-- Function used to shrink nav bar removing paddings and adding black background -->
+    <script>
+        $(window).scroll(function() {
+            if ($(document).scrollTop() > 50) {
+                $('.nav').addClass('affix');
+                console.log("OK");
+            } else {
+                $('.nav').removeClass('affix');
+            }
+        });
+    </script>
+
+
+
+<!--</body>
+</html>-->
+{% endblock %}
